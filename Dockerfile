@@ -4,6 +4,7 @@ FROM node:9.2.1-alpine
 RUN apk update && apk add bash tzdata \
     && cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apk add --no-cache mongodb \
+    build-base \
     python
 VOLUME [ "/data/db" ]
 
