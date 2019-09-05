@@ -13,7 +13,7 @@ WORKDIR /opt/cms
 ADD . .
 COPY mongo.sh /root
 ENTRYPOINT [ "/root/mongo.sh" ]
-RUN mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log —log append —fork && \
+RUN mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  —fork && \
     npm install && \
     npm run init
 EXPOSE 8080
