@@ -12,7 +12,7 @@ VOLUME [ "/data/db" ]
 WORKDIR /opt/cms
 ADD . .
 COPY mongo.sh /root
-ENTRYPOINT [ "/root/mongo.sh" ]
+# ENTRYPOINT [ "/root/mongo.sh" ]
 RUN mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  --logappend --fork && \
     npm install && \
     npm run init
