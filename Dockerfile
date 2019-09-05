@@ -18,4 +18,4 @@ RUN mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  --log
     npm run init
 EXPOSE 8080
 
-CMD [ "node","server.js" ]
+CMD [ "mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  --logappend --fork","&&","node","server.js" ]
