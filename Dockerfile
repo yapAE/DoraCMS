@@ -11,11 +11,11 @@ VOLUME [ "/data/db" ]
 
 WORKDIR /opt/cms
 ADD . .
-COPY mongo.sh /root
+COPY run.sh /root
 # ENTRYPOINT [ "/root/mongo.sh" ]
 RUN mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  --logappend --fork && \
     npm install && \
     npm run init
 EXPOSE 8080
 
-CMD [ "mongod --dbpath=/data/db/ --port 27017 --logpath=/data/db/mongodb.log  --logappend --fork","&&","node","server.js" ]
+CMD [ "/bin/sh","/root/run.sh" ]
