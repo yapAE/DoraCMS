@@ -6,11 +6,9 @@ RUN apk update && apk add bash tzdata \
     && apk add --no-cache mongodb
 VOLUME [ "/data/db" ]
 
-RUN mogod
-
 WORKDIR /opt/cms
 ADD . .
-
+ENTRYPOINT [ "/opt/cms/run.sh" ]
 RUN npm install && \
     npm run init
 EXPOSE 8080
