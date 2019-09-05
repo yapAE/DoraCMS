@@ -13,7 +13,7 @@ WORKDIR /opt/cms
 ADD . .
 COPY mongo.sh /root
 ENTRYPOINT [ "/root/mongo.sh" ]
-RUN mongod && \
+RUN mongod --fork && \
     npm install && \
     npm run init
 EXPOSE 8080
