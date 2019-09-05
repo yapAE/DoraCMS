@@ -11,8 +11,10 @@ VOLUME [ "/data/db" ]
 
 WORKDIR /opt/cms
 ADD . .
-ENTRYPOINT [ "/opt/cms/mongo.sh" ]
-RUN npm install && \
+COPY mongo.sh /root
+ENTRYPOINT [ "/root/mongo.sh" ]
+RUN mongod && \
+    npm install && \
     npm run init
 EXPOSE 8080
 
