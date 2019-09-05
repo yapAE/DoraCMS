@@ -4,13 +4,14 @@ FROM node:9.2.1-alpine
 RUN apk update && apk add bash tzdata \
     && cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apk add --no-cache mongodb \
+    mongodb-tools \
     build-base \
     python
 VOLUME [ "/data/db" ]
 
 WORKDIR /opt/cms
 ADD . .
-ENTRYPOINT [ "/opt/cms/run.sh" ]
+ENTRYPOINT [ "/opt/cms/mongo.sh" ]
 RUN npm install && \
     npm run init
 EXPOSE 8080
